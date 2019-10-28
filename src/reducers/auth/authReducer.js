@@ -20,7 +20,7 @@ const loginUser = (state)=>{
 
 // LOGOUT USER
 const logOutUser = (state)=>{
-    return true
+    return false
 }
 export default createReducer(initialState, {
     [CHECK_USER_AUTH_STATE]: checkUsersAuthState,

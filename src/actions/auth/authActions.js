@@ -6,7 +6,7 @@ import {
 } from "../../Types";
 import md5 from "md5";
 import { auth, database } from "../../config/firebase";
-// import { getUserDetails } from "../userDetails/userDetailsActions";
+import { getUserDetails } from "../userDetails/userDetailsActions";
 import { asyncActionStart, asyncActionFinished } from "../async/asyncAction";
 
 // firebase database usersRef
@@ -18,9 +18,8 @@ export const checkUserAuthState = () => async dispatch => {
   try {
     await auth().onAuthStateChanged(async user => {
       if (user) {
-
         // const checkUser = await axios.post(`/api/getUserDetails`, body, config);
-        // dispatch(getUserDetails(checkUser.data.user));
+        dispatch(getUserDetails(user.uid));
         
         dispatch({
           type: CHECK_USER_AUTH_STATE,
@@ -51,15 +50,9 @@ export const registerUser = (
   try {
     const user = await auth().createUserWithEmailAndPassword(email, password);
     const image = `https://gravatar.com/avatar/${md5(email)}?d=identicon`;
-    // const body = {
-    //   username,
-    //   email,
-    //   image
-    // };
-    console.log(user.user.uid)
+    
     try {
-    //   const newUser = await axios.post(`/api/register`, body, config);
-    //   dispatch(getUserDetails(newUser.data.user));
+        
     // SAVE USER IN FIREBASE DATABASE
     usersRef.child(user.user.uid).set({
         username,
@@ -67,6 +60,7 @@ export const registerUser = (
         image,
         uid: user.user.uid
     })
+    dispatch(getUserDetails(user.user.uid));
       dispatch({
         type: REGISTER_USER
       });
@@ -94,14 +88,11 @@ export const loginUser = (
   setInvalidPassword
 ) => async dispatch => {
   dispatch(asyncActionStart("Login_Loading"));
-  const body = {
-    email
-  };
+  
   try {
-    await auth().signInWithEmailAndPassword(email, password);
+    const user = await auth().signInWithEmailAndPassword(email, password);
     try {
-    //   const user = await axios.post(`/api/getUserDetails`, body, config);
-    //   dispatch(getUserDetails(user.data.user));
+      dispatch(getUserDetails(user.user.uid));
       dispatch({
         type: LOGIN_USER
       });
@@ -129,7 +120,7 @@ export const loginUser = (
 // LOGOUT USER
 export const logOutUser = () => async dispatch => {
   await auth().signOut();
-//   dispatch(getUserDetails(null));
+  dispatch(getUserDetails(null));
   dispatch({
     type: LOGOUT_USER
   });

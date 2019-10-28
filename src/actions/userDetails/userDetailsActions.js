@@ -1,18 +1,28 @@
-import axios from "axios";
 import {
   GET_USER_DETAILS,
   CHANGE_USER_IMAGE,
   CHANGE_USER_DETAILS
 } from "../../Types";
 import { config, endPoint } from "../../config";
-import { storage } from "../../config/firebase";
+import { storage, database } from "../../config/firebase";
+
+const usersRef = database().ref('users')
 
 // GET USER DETAILS
-export const getUserDetails = user => dispatch => {
-  dispatch({
-    type: GET_USER_DETAILS,
-    payload: { user }
-  });
+export const getUserDetails = uid => async dispatch => {
+  if(uid === null){
+    dispatch({
+      type: GET_USER_DETAILS,
+      payload: { user: null }
+    });
+  }
+  else{
+    const user = await usersRef.child(uid).once('value')
+    dispatch({
+      type: GET_USER_DETAILS,
+      payload: { user: user.val() }
+    });
+  }
 };
 
 // CHANGE USER IMAGE
@@ -41,15 +51,15 @@ export const changeUserImage = (file, body, setPercentage, closeModals) => async
             .then(async url => {
               body.image = url;
               try {
-              const res = await axios.put(
-                  `${endPoint}/api/changeUserImage`,
-                  body,
-                  config
-                );
-                dispatch({
-                  type: CHANGE_USER_IMAGE,
-                  payload: { user: res.data.user }
-                });
+              // const res = await axios.put(
+              //     `${endPoint}/api/changeUserImage`,
+              //     body,
+              //     config
+              //   );
+                // dispatch({
+                //   type: CHANGE_USER_IMAGE,
+                //   payload: { user: res.data.user }
+                // });
                 closeModals()
               } catch (err) {
                 console.error(err.message);
