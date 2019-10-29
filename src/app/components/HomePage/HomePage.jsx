@@ -5,6 +5,7 @@ import {Image} from 'semantic-ui-react'
 import { logOutUser } from '../../../actions/auth/authActions';
 import Gallery from 'react-photo-gallery';
 import { Fade } from 'react-slideshow-image';
+import './HomePage.css'
 
 
 const fadeProperties = {
@@ -37,7 +38,7 @@ const HomePage = ({user, logOutUser}) => {
       src: 'https://avatars0.githubusercontent.com/u/37216970?s=460&v=4',
       name:'fjfjfjf',
       width: 1,
-      height: 3
+      height: 2
     },
     {
       src: 'https://avatars0.githubusercontent.com/u/23637279?s=460&v=4',
@@ -68,6 +69,31 @@ const HomePage = ({user, logOutUser}) => {
       name:'fffff',
       width: 1,
       height: 1
+    },
+    {
+      src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
+      width: 1,
+      height: 1
+    },
+    {
+      src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
+      width: 3,
+      height: 4
+    },
+    {
+      src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
+      width: 3,
+      height: 4
+    },
+    {
+      src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
+      width: 3,
+      height: 4
     }
   ];
 
@@ -80,6 +106,17 @@ const HomePage = ({user, logOutUser}) => {
                 <img src={imageData.src} />
               </div>
               <h2>First Slide</h2>
+            </div>
+        )
+      })
+    )
+  }
+  const showImages=()=>{
+    return(
+      PHOTO_SET.map((imageData)=>{
+        return(
+          <div className="imageContainer">
+                <img src={imageData.src} className="image"/>
             </div>
         )
       })
@@ -106,7 +143,11 @@ const HomePage = ({user, logOutUser}) => {
         </Fade>
       </div>
       <div>    
-        <Gallery photos={PHOTO_SET} />
+        <Gallery photos={PHOTO_SET} direction={"column"}/>
+      </div>
+
+      <div>
+      {showImages()}
       </div>
     </div>
   );
