@@ -23,54 +23,6 @@ const HomePage = ({user, logOutUser}) => {
 
   const PHOTO_SET = [
     {
-      src: 'https://avatars2.githubusercontent.com/u/37300841?s=460&v=4',
-      name:'sahana',
-      width: 2,
-      height: 3
-    },
-    {
-      src: 'https://avatars3.githubusercontent.com/u/37531139?s=460&v=4',
-      name:'sfsfsfs',
-      width: 2,
-      height: 1
-    },
-    {
-      src: 'https://avatars0.githubusercontent.com/u/37216970?s=460&v=4',
-      name:'fjfjfjf',
-      width: 1,
-      height: 2
-    },
-    {
-      src: 'https://avatars0.githubusercontent.com/u/23637279?s=460&v=4',
-      name:'kkkkk',
-      width: 3,
-      height: 1
-    },
-    {
-      src: 'https://avatars3.githubusercontent.com/u/37531139?s=460&v=4',
-      name:'gjgg',
-      width: 4,
-      height: 3
-    },
-    {
-      src: 'https://avatars0.githubusercontent.com/u/37216970?s=460&v=4',
-      name:'sahankhnf',
-      width: 1,
-      height: 1
-    },
-    {
-      src: 'https://avatars2.githubusercontent.com/u/37300841?s=460&v=4',
-      name:'yuiyiy',
-      width: 4,
-      height: 3
-    },
-    {
-      src: 'https://avatars0.githubusercontent.com/u/37216970?s=460&v=4',
-      name:'fffff',
-      width: 1,
-      height: 1
-    },
-    {
       src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
       width: 4,
       height: 3
@@ -94,8 +46,64 @@ const HomePage = ({user, logOutUser}) => {
       src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
       width: 3,
       height: 4
+    },
+    {
+      src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
+      width: 3,
+      height: 4
+    },
+    {
+      src: "https://source.unsplash.com/PpOHJezOalU/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/XiDA78wAZVw/600x799",
+      width: 3,
+      height: 4
+    },
+    {
+      src: "https://source.unsplash.com/x8xJpClTvR0/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/qGQNmBE7mYw/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/NuO6iTBkHxE/800x599",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/pF1ug8ysTtY/600x400",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/A-fubu9QJxE/800x533",
+      width: 4,
+      height: 3
+    },
+    {
+      src: "https://source.unsplash.com/5P91SF0zNsI/740x494",
+      width: 4,
+      height: 3
     }
   ];
+  
 
   const showSlideShow = ()=>{
     return(
@@ -115,9 +123,7 @@ const HomePage = ({user, logOutUser}) => {
     return(
       PHOTO_SET.map((imageData)=>{
         return(
-          <div className="imageContainer">
-                <img src={imageData.src} className="image"/>
-            </div>
+            <img src={imageData.src} className="image"/>  
         )
       })
     )
@@ -142,11 +148,8 @@ const HomePage = ({user, logOutUser}) => {
           {showSlideShow()}
         </Fade>
       </div>
-      <div>    
-        <Gallery photos={PHOTO_SET} direction={"column"}/>
-      </div>
 
-      <div>
+      <div className="imageContainer">
       {showImages()}
       </div>
     </div>
