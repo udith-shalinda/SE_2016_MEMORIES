@@ -4,21 +4,18 @@ import { Input, Button, Icon } from "semantic-ui-react";
 import Dropzoneinput from "./DropzoneInput";
 import CropperInput from "./CropperInput";
 import { addPosts } from "../../../actions/posts/postAction";
-import ProgressBar from './ProgressBar/ProgressBar'
+import ProgressBar from "./ProgressBar/ProgressBar";
 
+const UploadPostModal = ({ user, addPosts, history }) => {
+  if (!user) {
+    history.push("/");
+  }
 
-
-
-const UploadPostModal = ({
-  user,
-  addPosts
-}) => {
   const [description, setDescription] = useState("");
-  
   const [files, setFiles] = useState([]);
   const [image, setImage] = useState(null);
   const [emojiPicker, setEmojiPicker] = useState(false);
-  const [percentage, setPercentage] = useState(0)
+  const [percentage, setPercentage] = useState(0);
 
   const checkValidFile = () => {
     if (description === "" || files.length === 0) {
@@ -39,7 +36,7 @@ const UploadPostModal = ({
   const closeModals = () => {
     setFiles([]);
     setImage(null);
-    setEmojiPicker(false)
+    setEmojiPicker(false);
   };
 
   const upload = async () => {
@@ -50,15 +47,11 @@ const UploadPostModal = ({
     addPosts(files, body, setPercentage);
     closeModals();
   };
-  
 
   return (
     <Fragment>
-      <Input
-        value={description}
-        onChange={e => onChange(e, setDescription)}
-      />
-      <ProgressBar percentage={percentage}/>
+      <Input value={description} onChange={e => onChange(e, setDescription)} />
+      <ProgressBar percentage={percentage} />
       <h2>Select an Image</h2>
       <Dropzoneinput setFiles={setFiles} />
       {files.length > 0 &&
