@@ -1,0 +1,28 @@
+.imageContainer{
+    column-count:5;
+    column-gap:0px;
+}
+
+.image{
+    padding: 1px;
+    width: 100% ;
+    /* height: auto !important;  */
+    display: flex;
+}
+.slideShowImage{
+    height: 400px;
+    z-index: 2555;
+    margin-top: 10%;
+    margin: auto;
+    filter: blur(0px);
+    margin-top: -600px;
+    margin-left:30vw;
+}
+.slideShowImageContainer{
+    height: 500px;
+    background-image: URL("https://source.unsplash.com/5P91SF0zNsI/740x494");
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+}

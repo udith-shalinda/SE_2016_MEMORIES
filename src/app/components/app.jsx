@@ -13,6 +13,7 @@ import HomePage from "./HomePage/HomePage";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import { checkUserAuthState } from "../../actions/auth/authActions";
+import UploadAlbum from "./UploadImages/UploadAlbum";
 
 const store = configureStore;
 store.dispatch(checkUserAuthState());
@@ -24,6 +25,7 @@ const App = ({ location }) => {
             <Route path="/" component={HomePage} exact />
             <Route path="/login" component={Login} exact />
             <Route path="/register" component={Register} exact />
+            <Route path="/upload" component={UploadAlbum} exact />
           </Switch>
     </Provider>
   );
