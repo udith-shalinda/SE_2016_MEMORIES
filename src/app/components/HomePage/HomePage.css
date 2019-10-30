@@ -11,18 +11,18 @@
 }
 .slideShowImage{
     height: 400px;
-    z-index: 2555;
-    margin-top: 10%;
+    z-index: 2;
     margin: auto;
     filter: blur(0px);
-    margin-top: -600px;
-    margin-left:30vw;
+    margin-top: -450px;
+    display: flex;
 }
 .slideShowImageContainer{
     height: 500px;
     background-image: URL("https://source.unsplash.com/5P91SF0zNsI/740x494");
-    /* background-position: center; */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(8px);
+    /* justify-content:center; */
 }
