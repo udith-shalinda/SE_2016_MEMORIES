@@ -136,6 +136,8 @@ const HomePage = ({user, logOutUser}) => {
       <Link to="/login">Login</Link>
       <br />
       <Link to="/register">Register</Link>
+      <br />
+      <Link to="/upload">Upload</Link>
       <button onClick={()=>logOutUser()}>Log Out</button>
       {user && <div>
         <Image src={user.image} />

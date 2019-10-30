@@ -16,13 +16,14 @@
     filter: blur(0px);
     margin-top: -450px;
     display: flex;
+    border-radius: 20px;
 }
 .slideShowImageContainer{
+    /* margin-top:-100px; */
     height: 500px;
     background-image: URL("https://source.unsplash.com/5P91SF0zNsI/740x494");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(8px);
-    /* justify-content:center; */
 }
