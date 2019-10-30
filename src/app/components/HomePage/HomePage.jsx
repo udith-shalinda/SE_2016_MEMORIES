@@ -11,7 +11,7 @@ import './HomePage.css'
 const fadeProperties = {
   duration: 5000,
   transitionDuration: 500,
-  infinite: false,
+  infinite: true,
   indicators: true,
   onChange: (oldIndex, newIndex) => {
     console.log(`fade transition from ${oldIndex} to ${newIndex}`);
@@ -109,12 +109,12 @@ const HomePage = ({user, logOutUser}) => {
     return(
       PHOTO_SET.map((imageData)=>{
         return(
-          <div className="each-fade">
-              <div className="image-container">
-                <img src={imageData.src} />
+          <div className="each-fade" >
+              <div className="slideShowImageContainer" style={{backgroundImage:`url(`+imageData.src+`)`}}>
               </div>
+              <img src={imageData.src} className="slideShowImage"/>
               <h2>First Slide</h2>
-            </div>
+          </div>
         )
       })
     )
@@ -143,6 +143,10 @@ const HomePage = ({user, logOutUser}) => {
         <p>{user.email}</p>
       </div>}
       
+      
+      {/* <div className="slideShowImageContainer">
+          dfsfs
+        </div> */}
       <div>
         <Fade {...fadeProperties}>
           {showSlideShow()}
