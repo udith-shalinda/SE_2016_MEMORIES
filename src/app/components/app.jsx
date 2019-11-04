@@ -14,6 +14,7 @@ import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import { checkUserAuthState } from "../../actions/auth/authActions";
 import UploadAlbum from "./UploadImages/UploadAlbum";
+import GalleryPage from "./photoGallery/GalleryPage";
 
 const store = configureStore;
 store.dispatch(checkUserAuthState());
@@ -26,6 +27,7 @@ const App = ({ location }) => {
             <Route path="/login" component={Login} exact />
             <Route path="/register" component={Register} exact />
             <Route path="/upload" component={UploadAlbum} exact />
+            <Route path="/profileGallery" component={GalleryPage} exact />
           </Switch>
     </Provider>
   );

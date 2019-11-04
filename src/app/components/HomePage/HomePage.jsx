@@ -1,9 +1,8 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Image} from 'semantic-ui-react'
 import { logOutUser } from '../../../actions/auth/authActions';
-import Gallery from 'react-photo-gallery';
 import { Fade } from 'react-slideshow-image';
 import './HomePage.css'
 
@@ -103,13 +102,23 @@ const HomePage = ({user, logOutUser}) => {
       height: 3
     }
   ];
-  
+  useEffect(()=>{
+    scrollEventHandler();
+  },[])
+
+  const scrollEventHandler = ()=>{
+    window.addEventListener('scroll',event=>{
+      console.log(event);
+      // document.getElementsByClassName('logoIcon').style.display = 'none'; 
+    })
+  }
 
   const showSlideShow = ()=>{
     return(
       PHOTO_SET.map((imageData)=>{
         return(
           <div className="each-fade" >
+               
               <div className="slideShowImageContainer" style={{backgroundImage:`url(`+imageData.src+`)`}}>
               </div>
               <img src={imageData.src} className="slideShowImage"/>
@@ -134,6 +143,8 @@ const HomePage = ({user, logOutUser}) => {
       Home
       <br />
       <Link to="/login">Login</Link>
+      <br/>
+      <Link to="/profileGallery">profilePage</Link>
       <br />
       <Link to="/register">Register</Link>
       <br />
@@ -144,16 +155,16 @@ const HomePage = ({user, logOutUser}) => {
         <p>{user.username}</p>
         <p>{user.email}</p>
       </div>}
-      
-      
-      {/* <div className="slideShowImageContainer">
-          dfsfs
-        </div> */}
+      <div className="logoIcon">
+        <img src="https://source.unsplash.com/zh7GEuORbUw/600x799" alt="sfsfs"/>
+      </div>
+    
       <div>
         <Fade {...fadeProperties}>
           {showSlideShow()}
         </Fade>
       </div>
+ 
 
       <div className="imageContainer">
       {showImages()}
