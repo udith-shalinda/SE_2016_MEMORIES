@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {Image} from 'semantic-ui-react'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Image } from 'semantic-ui-react'
 import { logOutUser } from '../../../actions/auth/authActions';
 import { Fade } from 'react-slideshow-image';
 import './HomePage.css'
@@ -18,7 +18,7 @@ const fadeProperties = {
 }
 
 
-const HomePage = ({user, logOutUser}) => {
+const HomePage = ({ user, logOutUser }) => {
 
   const PHOTO_SET = [
     {
@@ -102,37 +102,37 @@ const HomePage = ({user, logOutUser}) => {
       height: 3
     }
   ];
-  useEffect(()=>{
+  useEffect(() => {
     scrollEventHandler();
-  },[])
+  }, [])
 
-  const scrollEventHandler = ()=>{
-    window.addEventListener('scroll',event=>{
+  const scrollEventHandler = () => {
+    window.addEventListener('scroll', event => {
       console.log(event);
       // document.getElementsByClassName('logoIcon').style.display = 'none'; 
     })
   }
 
-  const showSlideShow = ()=>{
-    return(
-      PHOTO_SET.map((imageData)=>{
-        return(
+  const showSlideShow = () => {
+    return (
+      PHOTO_SET.map((imageData) => {
+        return (
           <div className="each-fade" >
-               
-              <div className="slideShowImageContainer" style={{backgroundImage:`url(`+imageData.src+`)`}}>
-              </div>
-              <img src={imageData.src} className="slideShowImage"/>
-              <h2>First Slide</h2>
+
+            <div className="slideShowImageContainer" style={{ backgroundImage: `url(` + imageData.src + `)` }}>
+            </div>
+            <img src={imageData.src} className="slideShowImage" />
+            <h2>First Slide</h2>
           </div>
         )
       })
     )
   }
-  const showImages=()=>{
-    return(
-      PHOTO_SET.map((imageData)=>{
-        return(
-            <img src={imageData.src} className="image"/>  
+  const showImages = () => {
+    return (
+      PHOTO_SET.map((imageData) => {
+        return (
+          <img src={imageData.src} className="image" />
         )
       })
     )
@@ -144,30 +144,32 @@ const HomePage = ({user, logOutUser}) => {
       <br />
       <Link to="/login">Login</Link>
       <br/>
+      <Link to="/profile">Profile</Link>
+      <br />
       <Link to="/profileGallery">profilePage</Link>
       <br />
       <Link to="/register">Register</Link>
       <br />
       <Link to="/upload">Upload</Link>
-      <button onClick={()=>logOutUser()}>Log Out</button>
+      <button onClick={() => logOutUser()}>Log Out</button>
       {user && <div>
         <Image src={user.image} />
         <p>{user.username}</p>
         <p>{user.email}</p>
       </div>}
       <div className="logoIcon">
-        <img src="https://source.unsplash.com/zh7GEuORbUw/600x799" alt="sfsfs"/>
+        <img src="https://source.unsplash.com/zh7GEuORbUw/600x799" alt="sfsfs" />
       </div>
-    
+
       <div>
         <Fade {...fadeProperties}>
           {showSlideShow()}
         </Fade>
       </div>
- 
+
 
       <div className="imageContainer">
-      {showImages()}
+        {showImages()}
       </div>
     </div>
   );
@@ -178,4 +180,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {logOutUser})(HomePage);
+export default connect(mapStateToProps, { logOutUser })(HomePage);
