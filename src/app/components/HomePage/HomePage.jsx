@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Image } from 'semantic-ui-react'
 import { logOutUser } from '../../../actions/auth/authActions';
 import { Fade } from 'react-slideshow-image';
+import Navigation from './../navigation/Navigation';
 import './HomePage.css'
 
 
@@ -142,23 +143,33 @@ const HomePage = ({ user, logOutUser }) => {
     <div>
       Home
       <br />
-      <Link to="/login">Login</Link>
+
+
+
+      {/* <Link to="/login">Login</Link>
       <br/>
       <Link to="/profile">Profile</Link>
       <br />
       <Link to="/profileGallery">profilePage</Link>
       <br />
-      <Link to="/register">Register</Link>
-      <br />
+      <Link to="/register">Register</Link> */}
+
+      {/* <Navigation></Navigation> */}
+
+
+      {/* <br />
       <Link to="/upload">Upload</Link>
-      <button onClick={() => logOutUser()}>Log Out</button>
+      <button onClick={() => logOutUser()}>Log Out</button> */}
       {user && <div>
         <Image src={user.image} />
         <p>{user.username}</p>
         <p>{user.email}</p>
       </div>}
+      
       <div className="logoIcon">
-        <img src="https://source.unsplash.com/zh7GEuORbUw/600x799" alt="sfsfs" />
+        <Link to="/navigation">
+          <img src="https://source.unsplash.com/zh7GEuORbUw/600x799" alt="sfsfs" />
+        </Link>
       </div>
 
       <div>
