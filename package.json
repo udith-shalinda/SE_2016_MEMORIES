@@ -7,7 +7,7 @@
     "cuid": "^2.1.6",
     "emoji-mart": "^2.11.1",
     "express": "^4.17.1",
-    "firebase": "^7.2.2",
+    "firebase": "^10.9.0",
     "javascript-time-ago": "^2.0.3",
     "md5": "^2.2.1",
     "mongoose": "^5.7.13",
